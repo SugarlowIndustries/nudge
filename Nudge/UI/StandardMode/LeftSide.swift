@@ -135,7 +135,7 @@ struct StandardModeLeftSide: View {
                 Button(action: {
                     self.showDeviceInfo.toggle()
                 }) {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemName: "info.circle")
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.top, -25.0)
