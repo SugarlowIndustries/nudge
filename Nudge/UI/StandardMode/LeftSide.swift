@@ -30,30 +30,6 @@ struct StandardModeLeftSide: View {
         let companyLogoPath = Utils().getCompanyLogoPath(darkMode: darkMode)
         // Left side of Nudge
         VStack(alignment: .center, spacing: 20) {
-            HStack {
-                Button(action: {
-                    self.showDeviceInfo.toggle()
-                }) {
-                    Image(systemName: "questionmark.circle")
-                }
-                .buttonStyle(PlainButtonStyle())
-                .padding(.top, -25.0)
-                // TODO: This is broken because of the padding
-                .help("Click for additional device information")
-                .onHover { inside in
-                    if inside {
-                        NSCursor.pointingHand.push()
-                    } else {
-                        NSCursor.pop()
-                    }
-                }
-                .sheet(isPresented: $showDeviceInfo) {
-                    DeviceInfo()
-                }
-                Spacer()
-            }
-            .frame(width: 290)
-
             // Company Logo
             Group {
                 if FileManager.default.fileExists(atPath: companyLogoPath) {
@@ -154,6 +130,30 @@ struct StandardModeLeftSide: View {
                 Spacer()
             }
             .frame(width: 250, height: 50)
+            
+            HStack {
+                Button(action: {
+                    self.showDeviceInfo.toggle()
+                }) {
+                    Image(systemName: "questionmark.circle")
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.top, -25.0)
+                // TODO: This is broken because of the padding
+                .help("Click for additional device information")
+                .onHover { inside in
+                    if inside {
+                        NSCursor.pointingHand.push()
+                    } else {
+                        NSCursor.pop()
+                    }
+                }
+                .sheet(isPresented: $showDeviceInfo) {
+                    DeviceInfo()
+                }
+                Spacer()
+            }
+            .frame(width: 290)
         }
         .frame(width: 300, height: 450)
     }
